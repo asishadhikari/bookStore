@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    
+ 	<p> Welcome! {{user_email}} </p>
+   <h2>Select Category</h2>
+  <form action="/display_category/" method="POST">
+    {% csrf_token %}
+    {{cats}}
+    <button type="submit">View Books</button>
+  </form>
+</body>
+</html>
+
+
