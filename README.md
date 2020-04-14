@@ -25,10 +25,12 @@ The platforms utilised for this project are as follows:
 
 # Building the project locally:
 - Create a new venv virtual environment (recommmended method for developing) 
-- ```pip install -f requirements.txt``` to install all the required python packages using pip
+- ```pip install -r requirements.txt``` to install all the required python packages using pip
+- Not all commands for table creation and populating the tables is included in queries.sql. Nevertheless, you can import some of the records into
+your sqlite server database as ```cat queries.sql | mysqlite3 db.sqlite3``` where ```dbsqlite3``` is the name of the database of this project's database but you can easily repurpose it and connect it to a different database. 
 
 # Running the server:
-- ```python3 manage.py runserver``` to start the server
+- ```cd bookStore``` then run ```python3 manage.py runserver``` to start the server
 - By default, you can find the webpage being served at ```localhost:8000``` but it can be configured in case it causes any issues for you. 
 - Django admin dashboard can be accessed at ```localhost:8000/admin```. 
 
