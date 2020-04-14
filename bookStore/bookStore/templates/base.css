@@ -1,0 +1,8 @@
+h2{
+    display: inline;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+}

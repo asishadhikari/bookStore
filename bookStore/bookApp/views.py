@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 
 from .forms import EmailForm
 from .forms import CategoryForm
+from .forms import TextBox, RadioForm
+
 from django.db import connection
 from .models import Author, Publisher, Book, Warehouse, Category, Customer, Cart
 
@@ -42,4 +44,31 @@ def display_category(request):
 	return render(request,'display_categories.html',{'books_to_display':books_to_display, 'category':category_selected})	
 #	return HttpResponse(str(res[0][1].isbn))
 
+def display_author(request):
+	f = TextBox()
+	return render(request,'display_author.html',{'f':f})
 
+
+
+def search_author(request):
+	author_searched = request.POST.get('text_box')
+	#search for the author in database
+	a = Author.objects.all().filter(name__icontains=author_searched)
+	if not a :
+		return HttpResponse("No Books are available by "+ author_searched)
+	else:
+		#select all boooks by author
+		books_obj  = Book.objects.filter(author_name__in = a )
+		return render(request,'list_author_books.html',{'books_to_display':books_obj,'author':author_searched})
+		
+
+
+def search(request):
+	#instantiate a radio form
+	r_form = RadioForm()
+	return render(request,'search.html',{'form':r_form})
+
+
+def search_result(request):
+	preferred_method = request.POST.get('search_technique')
+	return HttpResponse(preferred_method)
