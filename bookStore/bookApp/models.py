@@ -17,7 +17,7 @@ class Publisher(models.Model):
 		return self.name
 
 class Book(models.Model):
-	isbn = models.CharField(max_length=255)
+	isbn = models.PositiveIntegerField()
 
 	#foreign keys
 	publisher = models.ForeignKey(Publisher,on_delete=models.CASCADE)
@@ -41,7 +41,7 @@ class Warehouse(models.Model):
 
 	
 	def __str__(self):	
-		return self.warehouse_code
+		return str(self.warehouse_code)
 
 
 class Category(models.Model):
