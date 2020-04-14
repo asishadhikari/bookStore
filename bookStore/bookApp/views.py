@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
 from .forms import EmailForm
+from django.db import connection
+from .models import Author, Publisher, Book, Warehouse, Category, Customer, Cart
 
 #use models to control the view
 
@@ -12,24 +14,16 @@ from .forms import EmailForm
 #create functions that represent view
 
 
-'''
-def get_email(request):
-	if request.method=='POST':
-		form = EmailForm(request.POST)
-		if form.is_valid():
-			return HTTPResponseRedirect('/thanks/')
-
-	else:
-		form = EmailForm()
-
-	return render(request,'name.html',{'form'}:form)
-'''
 
 
 def login(request):
 	form = EmailForm()
 	return render(request,'login.html',{'form':form})
 
+
 def validate_user(request):
-	if request.method=='POST':
-		return HttpResponse("Hi!")
+	user_email = request.POST['user_email']
+	c = Customer.objects.all().filter(customer_email = user_email)
+	if c.count() > 0:
+		return HttpResponse("Record exists")
+	return HttpResponse("No such user")

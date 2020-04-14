@@ -12,3 +12,9 @@ python manage.py makemigrations bookApp
 python manage.py migrate
 
 python manage.py runserver
+
+https://www.digitalocean.com/community/tutorials/how-to-create-a-django-app-and-connect-it-to-a-database
+
+
+#excellent tutorial for queryset 
+https://www.youtube.com/watch?v=WimXjp0ryOo

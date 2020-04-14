@@ -1,0 +1,24 @@
+INSERT INTO BOOKAPP_CUSTOMER (CUSTOMER_NAME, CUSTOMER_EMAIL)
+VALUES ('JANE GOARON', 'JOPL_G@GMAIL.COM'),
+	   ('REBECCA G', 'R_OPA@GMAIL.COM'),
+	   ('mahana t', 'm_t@gmail.com');
+
+
+insert into bookapp_author(name)
+	VALUES ('JK Rowling'),
+	('Donald Knuth'),
+	('James Potter'),
+	('Rick Sanchez'),
+	('Barry Perry');
+
+
+insert into bookapp_publisher(name)
+	values ('poptilla'),
+	('NY times'),
+	("washington POst"),
+	("iBooks"),
+	("Smashwords"),
+	("Draft2Digital");
+
+
+
