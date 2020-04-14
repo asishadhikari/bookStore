@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Book Listing for {{listing_type}} "{{listing}}"</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>ISBN</th>
+    <th>Title</th> 
+    <th>Author</th>
+    <th>Publisher</th>
+    <th>Year</th>
+    <th>Price</th>
+    <th>Sold Units</th> 
+  </tr>
+
+{% for book in books_to_display %}
+
+<tr>
+  <td>{{book.isbn}}</td>
+  <td>{{book.title}}</td>
+  <td>{{book.author_name.name}}</td>
+  <td>{{book.publisher.name}}</td>
+  <td>{{book.year}}</td>
+  <td>{{book.price}}</td>
+<td>{{book.num_sold}}</td>
+
+</tr>
+
+
+{% endfor %}
+
+</table>
+
+<form action='/display_author'>
+  <input type="submit" value="Search by Author">
+</form>
+</body>
+</html>

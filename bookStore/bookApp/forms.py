@@ -15,11 +15,13 @@ class TextBox(forms.Form):
 	text_box = forms.CharField(label='Enter Author Name',max_length=100)
 
 
+
 SEARCH_CHOICES =  [('isbn', 'isbn'),
     ('title', 'title'),
-    ('author', 'publisher'),
+    ('publisher','publisher'),
+
 ]
 
 class RadioForm(forms.Form):
-	search_technique = forms.MultipleChoiceField(label=" Choose Preferred Search Index ",choices=SEARCH_CHOICES)
-
+	search_technique= forms.CharField(label='Please select search preference', widget=forms.RadioSelect(choices=SEARCH_CHOICES))
+	text_box = forms.CharField(label='Specify...',max_length=100)

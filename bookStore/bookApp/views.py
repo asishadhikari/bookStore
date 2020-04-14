@@ -65,10 +65,20 @@ def search_author(request):
 
 def search(request):
 	#instantiate a radio form
-	r_form = RadioForm()
-	return render(request,'search.html',{'form':r_form})
+	f = RadioForm()
+	return render(request,'search.html',{'form':f})
 
 
 def search_result(request):
 	preferred_method = request.POST.get('search_technique')
-	return HttpResponse(preferred_method)
+	text_box = request.POST.get('text_box')
+	if preferred_method == 'isbn':
+		books_to_display = Book.objects.all().filter(isbn=text_box)
+	elif preferred_method == 'title':
+		books_to_display = Book.objects.all().filter(title__icontains=text_box)
+	elif preferred_method == 'publisher':
+		#make list of publishers
+		publishers = Publisher.objects.all().filter(name__icontains = text_box)
+		#check if pub objec in list
+		books_to_display = Book.objects.filter(publisher__in= publishers)
+	return render(request,'generic_listing_template.html',{'listing_type':preferred_method,'listing':text_box,'books_to_display':books_to_display})
