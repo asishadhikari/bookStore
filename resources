@@ -7,3 +7,8 @@ https://www.youtube.com/watch?v=FzW4S1qHrIQ
 #tutorial
 https://www.youtube.com/watch?v=Z4D3M-NSN58&list=PLzMcBGfZo4-kQkZp-j9PNyKq7Yw5VYjq9
 
+python manage.py makemigrations bookApp
+
+python manage.py migrate
+
+python manage.py runserver
